@@ -25,16 +25,19 @@
 // Your final submission should have much more data than this, and
 // you should use more than just an array of strings to store it all.
 
+// In data.js there is an array of cat objects named cats. This original data
+// is used in the program and is available to be searched, filtered, or sorted
+// and then displayed on the page.
 
-// This function adds cards the page to display the data in the array
-function showCards() {
+// This function adds cards to the page to display the data
+function showCards(catsArray) {
   const cardContainer = document.getElementById("card-container");
   cardContainer.innerHTML = "";
   const templateCard = document.querySelector(".card");
 
-  // Looping over cats array declared in data.js 
-  for (let i = 0; i < cats.length; i++) {
-    let cat = cats[i];
+  // Looping over cats array
+  for (let i = 0; i < catsArray.length; i++) {
+    let cat = catsArray[i];
 
     const nextCard = templateCard.cloneNode(true); // Copy the template card
     editCardContent(nextCard, cat); // Edit title, image, list of info, and paragraph
@@ -124,18 +127,61 @@ function editCardContent(card, cat) {
   console.log("new card:", name, "- html: ", card);
 }
 
-// function searchCats(){
-//   const userInput = document.getElementById("search").value.toLowerCase();
-//   const everyCard = document.querySelectorAll(".card");
 
-//   everyCard.forEach((card, index)) => {
-//     let cat = cats[index];
+
+// This function will filter and/or sort the data array according to user choices. 
+// Then it calls the showCards function.
+function applyFilterSort() {
+  // We want a shallow copy of original cats that we can modify.
+  let filteredCats = [...cats];
+
+  // Get Filters
+  const breedFilter = document.getElementById("breedFilter").value;
+  const patternFilter = document.getElementById("patternFilter").value;
+  const colorFilter = document.getElementById("colorFilter").value;
+  const sexFilter = document.getElementById("sexFilter").value;
+
+  // Get Sort
+  const sortSelect = document.getElementById("sortSelect").value;
+
+  // Apply Filters if needed
+  // Note: value is "" if select menu is set to all/any
+  if (breedFilter) {
+    filteredCats = filteredCats.filter(cat => cat.breed.toLocaleLowerCase() === breedFilter.toLocaleLowerCase());
+  }
+
+  if (patternFilter) {
+    filteredCats = filteredCats.filter(cat => cat.pattern.toLocaleLowerCase() === patternFilter.toLocaleLowerCase());
+  }
+
+  if (colorFilter) {
+    filteredCats = filteredCats.filter(cat => cat.colors.includes(colorFilter));
+  }
+
+  if (sexFilter) {
+    filteredCats = filteredCats.filter(cat => cat.sex.toLocaleLowerCase() === sexFilter.toLocaleLowerCase());
+  }
+
+  // Apply sort if needed
+  switch (sortSelect) {
+    case "name-asc":
+      filteredCats.sort((a,b) => a.name.localeCompare(b.name));
+      break;
+    case "name-desc":
+      filteredCats.sort((a,b) => b.name.localeCompare(a.name));
+      break;
+    case "age-asc": // younger cats go first
+      filteredCats.sort((a,b) => new Date(b.birthdate) - new Date(a.birthdate));
+      break;
+    case "age-desc": // older cats go first
+      filteredCats.sort((a,b) => new Date(a.birthdate) - new Date(b.birthdate));
+      break;
+  }
     
-//   }
+    // Present the data with the filtered and/or sorted cat array
+    showCards(filteredCats);
 
-
-// }
-
+}
 
 
 function quoteAlert() {
@@ -150,5 +196,14 @@ function removeLastCard() {
   showCards(); // Call showCards again to refresh
 }
 
-// This calls the addCards() function when the page is first loaded
-document.addEventListener("DOMContentLoaded", showCards);
+// This calls the showCards() function when the page is first loaded
+// It also will attach required event listeners to filters/sorts drop down menus
+document.addEventListener("DOMContentLoaded", () => {
+  showCards(cats);
+  const selects = document.querySelectorAll(".filter-sort-section select");
+  selects.forEach(select => select.addEventListener("change", applyFilterSort));
+
+});
+
+
+
