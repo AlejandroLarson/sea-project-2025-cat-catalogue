@@ -18,10 +18,39 @@ body {
   color: white;
 }
 
+.filter-sort-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.filters,
+.sorts {
+  display: flex;
+  gap: 1em;
+  align-items: center;
+}
+
+.search-section {
+  display: flex;
+  align-items: center;
+  gap: .5em;
+  margin-bottom: 1em;
+}
+
+input, select {
+  padding: 6px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
 #card-container {
   display: flex;
   justify-content: center;
   margin: 20px;
+  flex-wrap: wrap;
 }
 
 .card {

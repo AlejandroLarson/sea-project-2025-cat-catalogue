@@ -124,8 +124,19 @@ function editCardContent(card, cat) {
   console.log("new card:", name, "- html: ", card);
 }
 
-// This calls the addCards() function when the page is first loaded
-document.addEventListener("DOMContentLoaded", showCards);
+// function searchCats(){
+//   const userInput = document.getElementById("search").value.toLowerCase();
+//   const everyCard = document.querySelectorAll(".card");
+
+//   everyCard.forEach((card, index)) => {
+//     let cat = cats[index];
+    
+//   }
+
+
+// }
+
+
 
 function quoteAlert() {
   console.log("Button Clicked!");
@@ -135,6 +146,9 @@ function quoteAlert() {
 }
 
 function removeLastCard() {
-  titles.pop(); // Remove last item in titles array
+  cats.pop(); // Remove last item in titles array
   showCards(); // Call showCards again to refresh
 }
+
+// This calls the addCards() function when the page is first loaded
+document.addEventListener("DOMContentLoaded", showCards);

@@ -7,11 +7,64 @@
     <script src ="data.js"></script>
     <script type="text/javascript" src="scripts.js"></script>
   </head>
-
   <body>
     <header class="main-header">
       <h1 class="title">Cat Catalogue</h1>
     </header>
+    <div class="filter-sort-section">
+      <div class = "filters">
+        <select id="breedFilter">
+          <option value="All Breeds">All Breeds</option>
+          <option value="Domestic Shorthair">Domestic Shorthair</option>
+          <option value="Domestic Mediumhair">Domestic Mediumhair</option>
+          <option value="Domestic Longhair">Domestic Longhair</option>
+          <option value="Maine Coon">Maine Coon</option>
+          <option value="Russian Blue">Russian Blue</option>
+          <option value="Siamese">Siamese</option>
+        </select>
+
+        <select id="patternFilter">
+          <option value="All Patterns">All Patterns</option>
+          <option value="Solid">Solid</option>
+          <option value="Bicolor">Bicolor</option>
+          <option value="Tabby">Tabby</option>
+          <option value="Tuxedo">Tuxedo</option>
+          <option value="Tortoiseshell">Tortoiseshell</option>
+        </select>
+
+        <select id="colorFilter">
+          <option value="All Colors">All Colors</option>
+          <option value="Black">Black</option>
+          <option value="White">White</option>
+          <option value="Brown">Brown</option>
+          <option value="Orange">Orange</option>
+          <option value="Gray">Gray</option>
+        </select>
+
+        <select id="sexFilter">
+          <option value="Any Sex">Any Sex</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+        </select>
+      </div>
+      <div class = "sorts">
+          <label>Sort by:</label>
+          <select id="sortSelect">
+            <option value="">None</option>
+            <option value="name-asc">Name A-Z</option>
+            <option value="name-desc">Name Z-A</option>
+            <option value="age-asc">Age Ascending</option>
+            <option value="age-desc">Age Descending</option>
+          </select>
+        </select>
+      </div>
+    </div>
+    <div class = "search-section">
+      <label for="searchName">Search by Name:</label>
+      <input type="text" id="searchName" placeholder="Enter name (or leave blank)" />
+      <button id="searchBtn">Search</button>
+      <button id="resetBtn">Reset</button>
+    </div>
     <div id="card-container"></div>
     <div class="card" style="display: none">
       <div class="card-content">
@@ -20,7 +73,6 @@
         <ul>
         </ul>
         <p class="card-description"></p>
-        
       </div>
     </div>
     <div class="footer">
