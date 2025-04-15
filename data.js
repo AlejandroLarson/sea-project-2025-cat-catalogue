@@ -1,4 +1,11 @@
-// JSON array for cats
+// JSON array for cat objects
+
+/*
+
+Many of these photos are from my phone while at the Animal Wellness Foundation.
+A few have been taken from Reddit.
+
+*/
 
 const cats = 
 [
@@ -199,9 +206,3 @@ const cats =
 }
 ]
 
-/*
-
-Many of these photos are from my phone while at the Animal Wellness Foundation.
-A few have been taken from Reddit.
-
-*/
