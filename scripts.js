@@ -129,9 +129,9 @@ function editCardContent(card, cat) {
 
 
 
-// This function will filter and/or sort the data array according to user choices. 
-// Then it calls the showCards function.
-function applyFilterSort() {
+// This function will filter, search, and/or sort the data array according 
+// to user choices. Then it calls the showCards function.
+function applyFilterSearchSort() {
   // We want a shallow copy of original cats that we can modify.
   let filteredCats = [...cats];
 
@@ -143,6 +143,9 @@ function applyFilterSort() {
 
   // Get Sort
   const sortSelect = document.getElementById("sortSelect").value;
+
+  // Get user input in search bar
+  const userInput = document.getElementById("searchName").value.trim().toLowerCase();
 
   // Apply Filters if needed
   // Note: value is "" if select menu is set to all/any
@@ -162,6 +165,11 @@ function applyFilterSort() {
     filteredCats = filteredCats.filter(cat => cat.sex.toLocaleLowerCase() === sexFilter.toLocaleLowerCase());
   }
 
+  // Search for name provided by user
+  if (userInput) {
+    filteredCats = filteredCats.filter(cat => cat.name.toLocaleLowerCase().includes(userInput));
+  }
+
   // Apply sort if needed
   switch (sortSelect) {
     case "name-asc":
@@ -178,12 +186,26 @@ function applyFilterSort() {
       break;
   }
     
-    // Present the data with the filtered and/or sorted cat array
-    showCards(filteredCats);
+  // Present the data with the modified cat array
+  showCards(filteredCats);
 
 }
 
+// This will reset every selection menu back to default and then display
+// cards using the original cats array
+function resetAll(){
+  document.getElementById("searchName").value = "";
+  document.getElementById("breedFilter").value = "";
+  document.getElementById("patternFilter").value = "";
+  document.getElementById("colorFilter").value = "";
+  document.getElementById("sexFilter").value = "";
+  document.getElementById("sortSelect").value = "";
+  showCards(cats);
+}
 
+
+
+// Displays a quote
 function quoteAlert() {
   console.log("Button Clicked!");
   alert(
@@ -193,7 +215,7 @@ function quoteAlert() {
 
 function removeLastCard() {
   cats.pop(); // Remove last item in titles array
-  showCards(); // Call showCards again to refresh
+  showCards(cats); // Call showCards again to refresh
 }
 
 // This calls the showCards() function when the page is first loaded
@@ -201,8 +223,7 @@ function removeLastCard() {
 document.addEventListener("DOMContentLoaded", () => {
   showCards(cats);
   const selects = document.querySelectorAll(".filter-sort-section select");
-  selects.forEach(select => select.addEventListener("change", applyFilterSort));
-
+  selects.forEach(select => select.addEventListener("change", applyFilterSearchSort));
 });
 
 
