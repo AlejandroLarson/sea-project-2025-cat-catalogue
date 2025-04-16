@@ -20,7 +20,7 @@ const cats =
     "colors" : ["Brown"],
     "attributes" : ["Good with kids", "Good with dogs"],
     "image" : "images/cat_1.jpg",
-    "description" : "Sprinkles is a wonderful little kitten looking for a good home"
+    "description" : "Sprinkles is a wonderful little kitten looking for a good home."
 },
 {
     "id": 2,
@@ -33,7 +33,7 @@ const cats =
     "colors" : ["Black", "White"],
     "attributes": ["Playful", "Talkative"],
     "image": "images/cat_2.jpg",
-    "description": "Shrimp is a kitten that loves attention and can play all day"
+    "description": "Shrimp is a kitten that loves attention and can play all day."
 },
 {
     "id": 3,
@@ -46,7 +46,7 @@ const cats =
     "colors" : ["Brown"],
     "attributes": ["Playful","Good with kids"],
     "image": "images/cat_3.jpg",
-    "description": "Ferrari is a sweet kitten discovered at a local junkyard"
+    "description": "Ferrari is a sweet kitten discovered at a local junkyard, hence the name."
 },
 {
     "id": 4,
@@ -59,7 +59,7 @@ const cats =
     "colors" : ["Orange", "White"],
     "attributes": ["Independent", "Calm"],
     "image": "images/cat_4.jpg",
-    "description": "Caputo is a very calm and independent cat that would love to explore your home"
+    "description": "Caputo is a very calm and independent cat that would love to explore your home."
 },
 {
     "id": 5,
@@ -72,7 +72,7 @@ const cats =
     "colors" : ["Orange"],
     "attributes": ["Good with other cats"],
     "image": "images/cat_5.jpg",
-    "description": "Creamsicle loves to play and makes lots of friends with other cats"
+    "description": "Creamsicle loves to play and makes lots of friends with other cats."
 },
 {
     "id": 6,
@@ -85,7 +85,7 @@ const cats =
     "colors" : ["Gray"],
     "attributes": ["Shy", "Not good with other cats"],
     "image": "images/cat_6.jpg",
-    "description": "Dusty is shy and scared of other cats. Once he trusts you, he can be very loving"
+    "description": "Dusty is shy and scared of other cats. Once he trusts you, he can be very loving."
 },
 {
     "id": 7,
@@ -98,7 +98,7 @@ const cats =
     "colors" : ["Black"],
     "attributes": ["Affectionate", "Shoulderkitty"],
     "image": "images/cat_7.jpg",
-    "description": "Willow will climb onto your shoulder like a parrot and stay there forever"
+    "description": "Willow will climb onto your shoulder like a parrot and stay there forever."
 },
 {
     "id": 8,
@@ -111,7 +111,7 @@ const cats =
     "colors" : ["Brown"],
     "attributes": ["Curious", "Talkative"],
     "image": "images/cat_8.jpg",
-    "description": "Bachata loves to meow for attention and someone to play with"
+    "description": "Bachata loves to meow for attention and someone to play with."
 },
 {
     "id": 9,
@@ -124,7 +124,7 @@ const cats =
     "colors" : ["White","Black"],
     "attributes": ["Lapkitty"],
     "image": "images/cat_9.jpg",
-    "description": "Zoe will look for a comfortable lap to sleep in"
+    "description": "Zoe will look for a comfortable lap to sleep in."
 },
 {
     "id": 10,
@@ -137,7 +137,7 @@ const cats =
     "colors" : ["White","Gray"],
     "attributes": ["Independent", "Good with kids"],
     "image": "images/cat_10.jpg",
-    "description": "Nebula has a big personality and loves kids"
+    "description": "Nebula has a big personality and loves kids."
 },
 {
     "id": 11,
@@ -150,7 +150,7 @@ const cats =
     "colors" : ["Brown"],
     "attributes": ["Lapkitty","Good with other cats"],
     "image": "images/cat_11.jpg",
-    "description": "Homer is always looking for a good place to sleep"
+    "description": "Homer is always looking for a good place to sleep."
 },
 {
     "id": 12,
@@ -176,12 +176,12 @@ const cats =
     "colors" : ["White"],
     "attributes": ["Shy"],
     "image": "images/cat_13.jpg",
-    "description": "Nala is a shy kitten that needs a patient parent to help her come out of her shell"
+    "description": "Nala is a shy kitten that needs a patient parent to help her come out of her shell."
 },
 {
     "id": 14,
     "name": "Meadow",
-    "birthdate": "2012-11-18",
+    "birthdate": "2015-11-18",
     "arrivaldate": "2025-01-02",
     "sex": "Female",
     "breed": "Domestic Shorthair",
@@ -189,7 +189,7 @@ const cats =
     "colors" : ["Black","Orange"],
     "attributes": ["Playful", "Health issue"],
     "image": "images/cat_14.jpg",
-    "description": "Meadow is an older cat but still very playful. She has a kidney issue"
+    "description": "Meadow is a slightly older cat but still acts like a kitten. She has a kidney issue."
 },
 {
     "id": 15,
@@ -202,7 +202,7 @@ const cats =
     "colors" : ["Gray"],
     "attributes": ["Loves water", "Playful"],
     "image": "images/cat_15.jpg",
-    "description": "Mochi loves to play and also seems to love water and taking baths"
+    "description": "Mochi loves to play and also seems to love water and taking baths."
 }
 ]
 

@@ -1,15 +1,20 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Cat Catalogue | Home</title>
+    <title> Snap Cat Rescue | Home</title>
     <meta name="description" content="A Catalogue of cats available for adoption" />
     <link rel="stylesheet" href="style.css" />
     <script src ="data.js"></script>
     <script type="text/javascript" src="scripts.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+
   </head>
   <body>
     <header class="main-header">
-      <h1 class="title">Cat Catalogue</h1>
+      
+      <h1 class="title"><img src="images/snapcat_emoji.jpg" alt="Cat Logo" class="snapcat-logo"><br>Snap Cat Rescue</h1>
     </header>
     <div class="filter-sort-section">
       <div class = "filters">
@@ -76,8 +81,14 @@
       </div>
     </div>
     <div class="footer">
+      <div class = "footer-btns">
       <button onclick="quoteAlert();">Get A Quote!</button>
       <button onclick="removeLastCard();">Remove A Card!</button>
+      </div>
+      <p class = "attribution">
+        Background by <a href="https://www.vecteezy.com/vector-art/3832757-dog-and-cat-paw-pattern-background" target ="_blank">Vectors by Vecteezy</a><br>
+        Snapchat cat logo <a href = "https://www.pinterest.com/pin/mint-aesthetic-snapchat-app-icon--18295942228912280/" target = "_blank">source</a>
+      </p>
     </div>
   </body>
 </html>

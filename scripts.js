@@ -30,6 +30,7 @@
 // and then displayed on the page.
 
 // This function adds cards to the page to display the data
+// The parameter is an array of cat objects
 function showCards(catsArray) {
   const cardContainer = document.getElementById("card-container");
   cardContainer.innerHTML = "";
@@ -45,6 +46,8 @@ function showCards(catsArray) {
   }
 }
 
+// This function edits all the content of each card including
+// name, image, and various other details
 function editCardContent(card, cat) {
   // Getting data from cat object
   let id = cat.id;
@@ -209,7 +212,7 @@ function resetAll(){
 function quoteAlert() {
   console.log("Button Clicked!");
   alert(
-    "I guess I can kiss heaven goodbye, because it got to be a sin to look this good!"
+    "\"I love cats because I enjoy my home; and little by little, they become its visible soul.\" –Jean Cocteau"
   );
 }
 
