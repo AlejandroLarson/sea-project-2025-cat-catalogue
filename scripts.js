@@ -22,15 +22,13 @@
  *    with the string you added to the array, but a broken image.
  *
  */
-// Your final submission should have much more data than this, and
-// you should use more than just an array of strings to store it all.
 
 // In data.js there is an array of cat objects named cats. This original data
 // is used in the program and is available to be searched, filtered, or sorted
 // and then displayed on the page.
 
-// This function adds cards to the page to display the data
-// The parameter is an array of cat objects
+// This function adds cards to the page to display the data for each cat.
+// The parameter is an array of cat objects.
 function showCards(catsArray) {
   const cardContainer = document.getElementById("card-container");
   cardContainer.innerHTML = "";
@@ -47,7 +45,7 @@ function showCards(catsArray) {
 }
 
 // This function edits all the content of each card including
-// name, image, and various other details
+// name, image, and various other details.
 function editCardContent(card, cat) {
   // Getting data from cat object
   let id = cat.id;
@@ -130,68 +128,93 @@ function editCardContent(card, cat) {
   console.log("new card:", name, "- html: ", card);
 }
 
-
-
-// This function will filter, search, and/or sort the data array according 
-// to user choices. Then it calls the showCards function.
-function applyFilterSearchSort() {
+// This function wiil create an updated array depending on the user's choices
+// regarding filtering, searching, or sorting the data. Then it calls
+// showCards function and sends it the updated array as a parameter.
+function updateCatDisplay(){
   // We want a shallow copy of original cats that we can modify.
-  let filteredCats = [...cats];
+  let updatedCats = [...cats];
 
+  // Filter
+  updatedCats = filterCats(updatedCats);
+  
+  // Search
+  updatedCats = searchCats(updatedCats);
+
+  // Sort
+  updatedCats = sortCats(updatedCats);
+
+  showCards(updatedCats);
+}
+
+
+// This function obtains user's filter choices, applies them, and then
+// returns a filtered cat array.
+function filterCats(catsArray) {
   // Get Filters
   const breedFilter = document.getElementById("breedFilter").value;
   const patternFilter = document.getElementById("patternFilter").value;
   const colorFilter = document.getElementById("colorFilter").value;
   const sexFilter = document.getElementById("sexFilter").value;
 
-  // Get Sort
-  const sortSelect = document.getElementById("sortSelect").value;
-
-  // Get user input in search bar
-  const userInput = document.getElementById("searchName").value.trim().toLowerCase();
-
   // Apply Filters if needed
   // Note: value is "" if select menu is set to all/any
   if (breedFilter) {
-    filteredCats = filteredCats.filter(cat => cat.breed.toLocaleLowerCase() === breedFilter.toLocaleLowerCase());
+    catsArray = catsArray.filter(cat => cat.breed.toLocaleLowerCase() === breedFilter.toLocaleLowerCase());
   }
 
   if (patternFilter) {
-    filteredCats = filteredCats.filter(cat => cat.pattern.toLocaleLowerCase() === patternFilter.toLocaleLowerCase());
+    catsArray = catsArray.filter(cat => cat.pattern.toLocaleLowerCase() === patternFilter.toLocaleLowerCase());
   }
 
   if (colorFilter) {
-    filteredCats = filteredCats.filter(cat => cat.colors.includes(colorFilter));
+    catsArray = catsArray.filter(cat => cat.colors.includes(colorFilter));
   }
 
   if (sexFilter) {
-    filteredCats = filteredCats.filter(cat => cat.sex.toLocaleLowerCase() === sexFilter.toLocaleLowerCase());
+    catsArray = catsArray.filter(cat => cat.sex.toLocaleLowerCase() === sexFilter.toLocaleLowerCase());
   }
+
+  return catsArray;
+}
+
+// This function gets user's input and applies that to search for the name of a cat.
+// It will return a modified array containing it if it exists.
+function searchCats(catsArray){
+  // Get user input in search bar
+  const userInput = document.getElementById("searchName").value.trim().toLowerCase();
 
   // Search for name provided by user
   if (userInput) {
-    filteredCats = filteredCats.filter(cat => cat.name.toLocaleLowerCase().includes(userInput));
+    catsArray = catsArray.filter(cat => cat.name.toLocaleLowerCase().includes(userInput));
   }
+
+  return catsArray;
+
+}
+
+// This function will sort the array depending on the user's choice and will return the array.
+function sortCats(catsArray){
+  // Get sort choice
+  const sortSelect = document.getElementById("sortSelect").value;
 
   // Apply sort if needed
   switch (sortSelect) {
     case "name-asc":
-      filteredCats.sort((a,b) => a.name.localeCompare(b.name));
+      catsArray.sort((a,b) => a.name.localeCompare(b.name));
       break;
     case "name-desc":
-      filteredCats.sort((a,b) => b.name.localeCompare(a.name));
+      catsArray.sort((a,b) => b.name.localeCompare(a.name));
       break;
     case "age-asc": // younger cats go first
-      filteredCats.sort((a,b) => new Date(b.birthdate) - new Date(a.birthdate));
+      catsArray.sort((a,b) => new Date(b.birthdate) - new Date(a.birthdate));
       break;
     case "age-desc": // older cats go first
-      filteredCats.sort((a,b) => new Date(a.birthdate) - new Date(b.birthdate));
+      catsArray.sort((a,b) => new Date(a.birthdate) - new Date(b.birthdate));
       break;
-  }
+    }
     
-  // Present the data with the modified cat array
-  showCards(filteredCats);
-
+    return catsArray; 
 }
 
 // This will reset every selection menu back to default and then display
@@ -205,8 +228,6 @@ function resetAll(){
   document.getElementById("sortSelect").value = "";
   showCards(cats);
 }
-
-
 
 // Displays a quote
 function quoteAlert() {
@@ -226,7 +247,7 @@ function removeLastCard() {
 document.addEventListener("DOMContentLoaded", () => {
   showCards(cats);
   const selects = document.querySelectorAll(".filter-sort-section select");
-  selects.forEach(select => select.addEventListener("change", applyFilterSearchSort));
+  selects.forEach(select => select.addEventListener("change", updateCatDisplay));
 });
 
 
